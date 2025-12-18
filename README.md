@@ -1,27 +1,46 @@
 # vue-3-ecommerce
 
-This template should help get you started developing with Vue 3 in Vite.
+Tienda online
 
-## Recommended IDE Setup
+## Entities
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Recommended Browser Setup
+### Product
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- name
+- description
+- price
+- image
 
-## Type Support for `.vue` Imports in TS
+### Category
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- mame
+- description
 
-## Customize configuration
+### Cart
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- products: `[{productid: 1, quantity: 3}, {productid: 7, quantity: 5}]`
+
+## Components
+
+
+## ProductCard
+
+
+## Pages
+
+- / -> Todos los productos
+- /category/5 -> Productos solo de la categoria 5
+- /cart -> Ver el carrito de compras
+
+
+
+
+
+
+
+
+
 
 ## Project Setup
 
