@@ -19,12 +19,17 @@
 </script>
 
 <template>
-  <h1>Hola soy la version con Composition API</h1>
+  <p>Tienes que llegar a 100 clicks</p>
+
   <h1>Contador: {{ count }}</h1>
+
   <button @click="increase">
     Incrementar contador
   </button>
   <button @click="decrease">
     Decrementar contador
   </button>
+
+  <p v-if="count < 10">Vamos tu puedes</p>
+  <p v-else>Ya te falta muy poco...</p>
 </template>
