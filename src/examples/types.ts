@@ -3,3 +3,9 @@ export interface IProduct{
   name: string,
   price: number
 }
+
+
+export interface ICartDetail{
+  productId: number,
+  quantity: number
+}

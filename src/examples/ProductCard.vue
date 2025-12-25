@@ -1,7 +1,7 @@
 
 <script lang="ts">
   import type { PropType } from 'vue';
-  import type { IProduct } from './IProduct'
+  import type { IProduct } from './types'
 
   export default{
     props: {
@@ -10,7 +10,7 @@
         required: true
       }
     },
-    // emits: ['addProduct'],
+    emits: ['addProduct'],
     methods: {
       onAddButtonClick(){
         // console.log("Agregando carrito " + this.product.id)
