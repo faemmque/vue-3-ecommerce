@@ -39,11 +39,17 @@
 
 <template>
   <div>
-    <ProductCard
-      v-for="product in products"
-      :product="product"
-      @addProduct="onAddProduct(product.id)"
-    />
+
+    <v-row>
+      <v-col v-for="product in products" cols="4">
+        <ProductCard
+          :product="product"
+          @addProduct="onAddProduct(product.id)"
+        />
+      </v-col>
+    </v-row>
+
     <Cart :details="details" />
+
   </div>
 </template>
