@@ -15,10 +15,22 @@ import type { ICartDetail } from './types';
 </script>
 
 <template>
-  <p>Productos agreados al carrito:</p>
-  <ul>
-    <li v-for="detail in details">
-      <p>Producto: {{ detail.productId }} (Qty: {{ detail.quantity }})</p>
-    </li>
-  </ul>
+  <v-card>
+    <v-card-title>Productos agreados al carrito:</v-card-title>
+    <v-card-text>
+      <v-list>
+        <v-list-item v-for="detail in details"
+          lines="one"
+          :key="detail.productId"
+          :value="detail.productId"
+          prepend-avatar="https://cdn.pixabay.com/photo/2017/03/29/04/09/shopping-icon-2184065_1280.png"
+        >
+          <v-list-item-title>
+            Producto: {{ detail.productId }} - (Qty: {{ detail.quantity }} )
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-card-text>
+  </v-card>
+
 </template>
