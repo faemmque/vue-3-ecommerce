@@ -1,7 +1,7 @@
 
 <script lang="ts">
   import type { PropType } from 'vue';
-  import type { IProduct } from './types'
+  import type { IProduct } from '../model/types'
 
   export default{
     props: {
@@ -38,6 +38,7 @@
 
       <v-card-actions>
         <v-btn
+          block
           variant="flat"
           @click="onAddButtonClick"
         >
