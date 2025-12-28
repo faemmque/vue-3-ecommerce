@@ -1,9 +1,14 @@
-<script setup lang="ts">
+<script lang="ts">
+import Cart from '@/components/Cart.vue';
+
+export default{
+  components:{
+    Cart
+  }
+}
 
 </script>
 
 <template>
-  <main>
-    <h1>Cart View</h1>
-  </main>
+  <Cart />
 </template>

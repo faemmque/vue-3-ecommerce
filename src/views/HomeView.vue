@@ -1,6 +1,11 @@
-<script setup lang="ts">
+<script lang="ts">
 import ProductList from '@/components/ProductList.vue';
 
+export default{
+  components:{
+    ProductList
+  }
+}
 
 </script>
 
