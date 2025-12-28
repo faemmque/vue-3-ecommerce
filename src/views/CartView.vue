@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import ProductList from '@/components/ProductList.vue';
-
 
 </script>
 
 <template>
   <main>
-    <ProductList />
+    <h1>Cart View</h1>
   </main>
 </template>

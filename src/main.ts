@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import ProductList from './examples/ProductList.vue'
+import App from './App.vue'
+import router from './router'
 
 // Vuetify
 import 'vuetify/styles'
@@ -16,11 +17,17 @@ const vuetify = createVuetify({
   defaults:{
     VBtn: {
       color: '#ba2e1b',
-      block: true,
+      // block: true,
       rounded: false
     },
   }
 })
 // End Vuetify
 
-createApp(ProductList).use(vuetify).mount('#app')
+
+const app = createApp(App)
+
+app.use(router);
+app.use(vuetify);
+
+app.mount('#app')

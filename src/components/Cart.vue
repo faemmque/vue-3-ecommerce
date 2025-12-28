@@ -1,7 +1,7 @@
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import type { ICartDetail } from './types';
+import type { ICartDetail } from '../model/types';
 
   export default{
     props:{
