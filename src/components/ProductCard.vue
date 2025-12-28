@@ -1,22 +1,23 @@
 
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import type { IProduct } from '../model/types'
+import type { PropType } from 'vue';
+import type { IProduct } from '../model/types'
+import { useCartStore } from '@/stores/cart';
 
-  export default{
-    props: {
-      product: {
-        type: Object as PropType<IProduct>,
-        required: true
-      }
-    },
-    emits: ['addProduct'],
-    methods: {
-      onAddButtonClick(){
-        this.$emit("addProduct")
-      }
+export default{
+  props: {
+    product: {
+      type: Object as PropType<IProduct>,
+      required: true
+    }
+  },
+  methods: {
+    onAddButtonClick(){
+      const cartStore = useCartStore();
+      cartStore.onAddProduct(this.product.id)
     }
   }
+}
 
 </script>
 
