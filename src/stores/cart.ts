@@ -6,7 +6,15 @@ export const useCartStore = defineStore('cart', {
     details: <Array<ICartDetail>> []
   }),
   getters: {
+    cartItemsCount: (state) => {
+      let count = 0;
 
+      state.details.forEach(detail => {
+        count += detail.quantity;
+      });
+
+      return count;
+    }
   },
   actions: {
     onAddProduct(productId: number){

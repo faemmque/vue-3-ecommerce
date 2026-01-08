@@ -19,9 +19,7 @@ export default{
       <v-list-item v-for="category in categories" :key="category.id" :title="category.name" link></v-list-item>
       <v-divider class="my-2"></v-divider>
       <v-list-item color="grey-lighten-4" link>
-        <v-list-title>
-          Order by price
-        </v-list-title>
+        Order by price
       </v-list-item>
     </v-list>
   </v-sheet>
