@@ -1,21 +1,26 @@
 
 <script lang="ts">
-import type { PropType } from 'vue';
-import type { ICartDetail } from '../model/types';
 import { useCartStore } from '@/stores/cart';
 
 export default{
-  // props:{
-  //   details:{
-  //     type: Object as PropType<Array<ICartDetail>>,
-  //     required: true
-  //   }
-  // }
   computed:{
+    cartStore(){
+      return useCartStore();
+    },
     details(){
-      const cartStore = useCartStore();
-      return cartStore.details;
+      return this.cartStore.details;
     }
+  },
+  methods:{
+    onClickDecrementQuantity(productId: number){
+      this.cartStore.onDecrement(productId);
+    },
+    onClickIncrementQuantity(productId: number){
+      this.cartStore.onIncrement(productId);
+    },
+    onClickDeleteProduct(productId: number){
+      this.cartStore.onDelete(productId);
+    },
   }
 }
 
@@ -25,18 +30,32 @@ export default{
   <v-card>
     <v-card-title>Productos agreados al carrito:</v-card-title>
     <v-card-text>
-      <v-list>
-        <v-list-item v-for="detail in details"
-          lines="one"
-          :key="detail.productId"
-          :value="detail.productId"
-          prepend-avatar="https://cdn.pixabay.com/photo/2017/03/29/04/09/shopping-icon-2184065_1280.png"
-        >
-          <v-list-item-title>
-            Producto: {{ detail.productId }} - (Qty: {{ detail.quantity }} )
-          </v-list-item-title>
-        </v-list-item>
-      </v-list>
+      <v-row>
+        <v-col cols="2"></v-col>
+        <v-col cols="8">
+          <v-table>
+            <thead>
+              <tr>
+                <th>ProductId</th>
+                <th>Quantity</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="detail in details">
+                <td>{{ detail.productId }}</td>
+                <td>{{ detail.quantity }}</td>
+                <td>
+                  <v-btn variant="flat" @click="onClickIncrementQuantity(detail.productId)"> + </v-btn> &nbsp;
+                  <v-btn variant="flat" @click="onClickDecrementQuantity(detail.productId)"> - </v-btn> &nbsp;
+                  <v-btn variant="flat" @click="onClickDeleteProduct(detail.productId)"> Eliminar </v-btn>
+                </td>
+              </tr>
+            </tbody>
+          </v-table>
+        </v-col>
+      </v-row>
+
     </v-card-text>
   </v-card>
 

@@ -28,5 +28,31 @@ export const useCartStore = defineStore('cart', {
           });
         }
     },
+    onIncrement(productId: number){
+      const detailFound = this.details.find(d => d.productId === productId);
+
+      if (detailFound)
+        detailFound.quantity += 1;
+    },
+    onDecrement(productId: number){
+      const detailFound = this.details.find(d => d.productId === productId);
+
+      if (detailFound){
+        if ((detailFound.quantity - 1) == 0) {
+          this.onDelete(productId);
+        }else{
+          detailFound.quantity -= 1;
+        }
+
+      }
+
+    },
+    onDelete(productId: number){
+      const index = this.details.findIndex(d => d.productId === productId);
+
+      if (index != -1) {
+        this.details.splice(index, 1);
+      }
+    }
   },
 })
