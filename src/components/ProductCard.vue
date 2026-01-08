@@ -32,7 +32,7 @@ export default{
 
       <v-card-text>
         <p class="mb-4">Esta es una descripcion de ejemplo</p>
-        <v-chip>
+        <v-chip variant="flat" color="#e30842">
           $ {{ product.price }}
         </v-chip>
       </v-card-text>

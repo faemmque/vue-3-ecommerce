@@ -4,8 +4,12 @@ export interface IProduct{
   price: number
 }
 
-
 export interface ICartDetail{
   productId: number,
   quantity: number
+}
+
+export interface ICategory{
+  id: number,
+  name: string
 }

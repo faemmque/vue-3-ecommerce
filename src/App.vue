@@ -5,22 +5,22 @@
 <template>
 
   <v-app id="inspire">
-    <v-app-bar flat>
+    <v-app-bar flat color="#f4eed4">
       <v-container class="mx-auto d-flex align-center justify-center">
         <v-avatar
           class="me-4 "
-          color="grey-darken-1"
+          color="#b94866"
           size="32"
         ></v-avatar>
 
         <RouterLink to="/">
-          <v-btn variant="text"> Home </v-btn>
+          <v-btn variant="text" color="#b94866"> Home </v-btn>
         </RouterLink>
         <RouterLink to="/cart">
-          <v-btn variant="text"> Cart </v-btn>
+          <v-btn variant="text" color="#b94866"> Cart </v-btn>
         </RouterLink>
         <RouterLink to="/about">
-          <v-btn variant="text"> About </v-btn>
+          <v-btn variant="text" color="#b94866"> About </v-btn>
         </RouterLink>
 
         <v-spacer></v-spacer>
