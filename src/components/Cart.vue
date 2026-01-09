@@ -1,21 +1,30 @@
 
 <script lang="ts">
-import type { PropType } from 'vue';
-import type { ICartDetail } from '../model/types';
 import { useCartStore } from '@/stores/cart';
+import { RouterLink } from 'vue-router';
 
 export default{
-  // props:{
-  //   details:{
-  //     type: Object as PropType<Array<ICartDetail>>,
-  //     required: true
-  //   }
-  // }
   computed:{
+    cartStore(){
+      return useCartStore();
+    },
     details(){
-      const cartStore = useCartStore();
-      return cartStore.details;
+      return this.cartStore.details;
+    },
+    showProducts(){
+      return this.details.length > 0 ? true : false
     }
+  },
+  methods:{
+    onClickDecrementQuantity(productId: number){
+      this.cartStore.onDecrement(productId);
+    },
+    onClickIncrementQuantity(productId: number){
+      this.cartStore.onIncrement(productId);
+    },
+    onClickDeleteProduct(productId: number){
+      this.cartStore.onDelete(productId);
+    },
   }
 }
 
@@ -25,18 +34,51 @@ export default{
   <v-card>
     <v-card-title>Productos agreados al carrito:</v-card-title>
     <v-card-text>
-      <v-list>
-        <v-list-item v-for="detail in details"
-          lines="one"
-          :key="detail.productId"
-          :value="detail.productId"
-          prepend-avatar="https://cdn.pixabay.com/photo/2017/03/29/04/09/shopping-icon-2184065_1280.png"
-        >
-          <v-list-item-title>
-            Producto: {{ detail.productId }} - (Qty: {{ detail.quantity }} )
-          </v-list-item-title>
-        </v-list-item>
-      </v-list>
+      <v-row>
+        <v-col cols="2"></v-col>
+        <v-col cols="8">
+          <v-table v-if="showProducts">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="detail in details">
+                <td>{{ detail.productId }}</td>
+                <td>{{ detail.quantity }}</td>
+                <td>
+                  <v-btn
+                    class="mr-2"
+                    icon="mdi-plus"
+                    size="x-small"
+                    variant="flat"
+                    @click="onClickIncrementQuantity(detail.productId)" />
+                  <v-btn
+                    class="mr-2"
+                    icon="mdi-minus"
+                    size="x-small"
+                    variant="flat"
+                    @click="onClickDecrementQuantity(detail.productId)" />
+                  <v-btn
+                    class="mr-2"
+                    icon="mdi-trash-can"
+                    size="x-small"
+                    variant="flat"
+                    @click="onClickDeleteProduct(detail.productId)" />
+                </td>
+              </tr>
+            </tbody>
+          </v-table>
+          <p v-else>
+            Aun no has agregado items a tu carrito de compras.
+            Hax <RouterLink to="/">clic aqui</RouterLink> para ver los productos disponibles.
+          </p>
+        </v-col>
+      </v-row>
+
     </v-card-text>
   </v-card>
 

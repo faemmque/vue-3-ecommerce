@@ -32,13 +32,14 @@ export default{
 
       <v-card-text>
         <p class="mb-4">Esta es una descripcion de ejemplo</p>
-        <v-chip>
+        <v-chip variant="flat" color="#e30842">
           $ {{ product.price }}
         </v-chip>
       </v-card-text>
 
       <v-card-actions>
         <v-btn
+          prepend-icon="mdi-cart-plus"
           block
           variant="flat"
           @click="onAddButtonClick"
