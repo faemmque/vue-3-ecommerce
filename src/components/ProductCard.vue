@@ -39,6 +39,7 @@ export default{
 
       <v-card-actions>
         <v-btn
+          prepend-icon="mdi-cart-plus"
           block
           variant="flat"
           @click="onAddButtonClick"

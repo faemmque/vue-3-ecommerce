@@ -11,6 +11,11 @@
       showBadgeItemsCount(){
         return this.itemsCount ? true : false
       }
+    },
+    methods:{
+      highlightSelectedMenu(option: string){
+        return this.$route.name === option ? true : false
+      }
     }
   }
 </script>
@@ -22,18 +27,19 @@
         class="me-4 "
         color="#b94866"
         size="32"
+        icon="mdi-storefront"
       ></v-avatar>
 
       <RouterLink to="/">
-        <v-btn variant="text" color="#b94866"> Home </v-btn>
+        <v-btn prepend-icon="mdi-home" :active="highlightSelectedMenu('home')" variant="text" color="#b94866"> Home </v-btn>
       </RouterLink>
       <RouterLink to="/cart">
         <v-badge location="top right" color="#339194" :content="itemsCount" :model-value="showBadgeItemsCount">
-          <v-btn variant="text" color="#b94866"> Cart </v-btn>
+          <v-btn prepend-icon="mdi-cart-variant" :active="highlightSelectedMenu('cart')" variant="text" color="#b94866"> Cart </v-btn>
         </v-badge>
       </RouterLink>
       <RouterLink to="/about">
-        <v-btn variant="text" color="#b94866"> About </v-btn>
+        <v-btn prepend-icon="mdi-information-slab-circle" :active="highlightSelectedMenu('about')" variant="text" color="#b94866"> About </v-btn>
       </RouterLink>
 
       <v-spacer></v-spacer>
