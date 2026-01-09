@@ -47,9 +47,4 @@
       />
     </v-col>
   </v-row>
-  <v-row>
-    <v-col>
-      <Cart :details="details" />
-    </v-col>
-  </v-row>
 </template>

@@ -5,6 +5,7 @@ import { createPinia } from 'pinia'
 
 // Vuetify
 import 'vuetify/styles'
+import '@mdi/font/css/materialdesignicons.css' //Icons
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
@@ -17,7 +18,7 @@ const vuetify = createVuetify({
   },
   defaults:{
     VBtn: {
-      color: '#ba2e1b',
+      color: '#b94866',
       // block: true,
       rounded: false
     },
