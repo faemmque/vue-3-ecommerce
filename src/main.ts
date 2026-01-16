@@ -19,8 +19,6 @@ const vuetify = createVuetify({
   defaults:{
     VBtn: {
       color: '#b94866',
-      // block: true,
-      rounded: false
     },
   }
 })

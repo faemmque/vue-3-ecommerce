@@ -1,8 +1,9 @@
-
 <script lang="ts">
 import type { PropType } from 'vue';
 import type { IProduct } from '../model/types'
 import { useCartStore } from '@/stores/cart';
+import { formatCurrency } from '@/utils/formatters'
+import { mapActions } from 'pinia';
 
 export default{
   props: {
@@ -11,29 +12,32 @@ export default{
       required: true
     }
   },
-  methods: {
-    onAddButtonClick(){
-      const cartStore = useCartStore();
-      cartStore.onAddProduct(this.product.id)
+  computed:{
+    productImageUrl(){
+      return this.product.image ?? '/images/products/default.png'
     }
+  },
+  methods: {
+    ...mapActions(useCartStore, {
+      onAddProduct:'onAddProduct'
+    }),
+    formatCurrency
   }
 }
-
 </script>
 
 <template>
     <v-card>
-
       <v-img
-        src="https://cdn.pixabay.com/photo/2017/12/15/19/07/ecommerce-3021581_1280.jpg"
+        :src="productImageUrl"
         height="200px"
         cover />
       <v-card-title>{{ product.name }}</v-card-title>
 
       <v-card-text>
         <p class="mb-4">Esta es una descripcion de ejemplo</p>
-        <v-chip variant="flat" color="#e30842">
-          $ {{ product.price }}
+        <v-chip variant="flat" color="#e30842" prepend-icon="mdi-cash-multiple">
+          {{ formatCurrency(product.price) }}
         </v-chip>
       </v-card-text>
 
@@ -42,12 +46,11 @@ export default{
           prepend-icon="mdi-cart-plus"
           block
           variant="flat"
-          @click="onAddButtonClick"
+          @click="onAddProduct(product)"
         >
           Agregar al carrito
         </v-btn>
       </v-card-actions>
-
     </v-card>
 </template>
 

@@ -1,23 +1,20 @@
 <script lang="ts">
-  import { RouterLink } from 'vue-router';
-  import { useCartStore } from '@/stores/cart';
+import { useCartStore } from '@/stores/cart';
+import { mapState } from 'pinia';
 
-  export default{
-    computed:{
-      itemsCount(){
-        const cartStore = useCartStore();
-        return cartStore.cartItemsCount;
-      },
-      showBadgeItemsCount(){
-        return this.itemsCount ? true : false
-      }
-    },
-    methods:{
-      highlightSelectedMenu(option: string){
-        return this.$route.name === option ? true : false
-      }
+export default{
+  computed:{
+   ...mapState(useCartStore,{
+    itemsCount:'cartItemsCount',
+    showBadgeItemsCount: state => state.cartItemsCount ? true : false
+   }),
+  },
+  methods:{
+    highlightSelectedMenu(option: string){
+      return this.$route.name === option ? true : false
     }
   }
+}
 </script>
 
 <template>
