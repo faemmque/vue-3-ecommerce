@@ -1,5 +1,4 @@
 <template>
-
   <v-row>
     <!-- <v-col cols="1"></v-col> -->
     <v-col cols="12">

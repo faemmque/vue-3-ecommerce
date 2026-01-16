@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
-import type { ICartDetail } from '@/model/types';
+import type { ICartDetail, IProduct } from '@/model/types';
 
 export const useCartStore = defineStore('cart', {
   state: () => ({
-    details: <Array<ICartDetail>> []
+    details: [] as ICartDetail[]
   }),
   getters: {
     cartItemsCount: (state) => {
@@ -14,28 +14,37 @@ export const useCartStore = defineStore('cart', {
       });
 
       return count;
+    },
+    getCartTotal: (state) => {
+      let total = 0;
+
+      state.details.forEach(detail => {
+        total += (detail.quantity * detail.product.price);
+      });
+
+      return total;
     }
   },
   actions: {
-    onAddProduct(productId: number){
-      const detailFound = this.details.find(d => d.productId === productId);
+    onAddProduct(product: IProduct){
+      const detailFound = this.details.find(d => d.product.id === product.id);
 
         if (detailFound) {
           detailFound.quantity += 1;
         } else {
           this.details.push({
-            productId, quantity: 1
+            product, quantity: 1
           });
         }
     },
     onIncrement(productId: number){
-      const detailFound = this.details.find(d => d.productId === productId);
+      const detailFound = this.details.find(d => d.product.id === productId);
 
       if (detailFound)
         detailFound.quantity += 1;
     },
     onDecrement(productId: number){
-      const detailFound = this.details.find(d => d.productId === productId);
+      const detailFound = this.details.find(d => d.product.id === productId);
 
       if (detailFound){
         if ((detailFound.quantity - 1) == 0) {
@@ -43,12 +52,10 @@ export const useCartStore = defineStore('cart', {
         }else{
           detailFound.quantity -= 1;
         }
-
       }
-
     },
     onDelete(productId: number){
-      const index = this.details.findIndex(d => d.productId === productId);
+      const index = this.details.findIndex(d => d.product.id === productId);
 
       if (index != -1) {
         this.details.splice(index, 1);

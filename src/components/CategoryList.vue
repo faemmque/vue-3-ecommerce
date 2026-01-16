@@ -4,10 +4,10 @@ import type { ICategory } from '@/model/types';
 export default{
   data(){
     return{
-      categories: <Array<ICategory>>[
-        {id:1, name: "Tecnology"},
-        {id:2, name: "Toys"},
-      ]
+      categories: [
+        {id:1, name: "Tecnology", description:''},
+        {id:2, name: "Toys", description:''},
+      ] as ICategory[]
     }
   }
 }

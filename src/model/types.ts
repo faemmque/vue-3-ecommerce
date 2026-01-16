@@ -2,14 +2,16 @@ export interface IProduct{
   id: number,
   name: string,
   price: number
+  image: string
 }
 
 export interface ICartDetail{
-  productId: number,
+  product: IProduct,
   quantity: number
 }
 
 export interface ICategory{
   id: number,
   name: string
+  description: string
 }
