@@ -5,8 +5,8 @@ import { mapState } from 'pinia';
 export default{
   computed:{
    ...mapState(useCartStore,{
-    itemsCount:'cartItemsCount',
-    showBadgeItemsCount: state => state.cartItemsCount ? true : false
+      itemsCount:'cartItemsCount',
+      showBadgeItemsCount: state => state.cartItemsCount ? true : false
    }),
   },
   methods:{
@@ -24,8 +24,8 @@ export default{
         class="me-4 "
         color="#b94866"
         size="32"
-        icon="mdi-storefront"
-      ></v-avatar>
+        icon="mdi-storefront">
+      </v-avatar>
 
       <RouterLink to="/">
         <v-btn prepend-icon="mdi-home" :active="$route.name === 'home' || $route.name === 'category'" variant="text" color="#b94866"> Home </v-btn>
@@ -49,8 +49,8 @@ export default{
           variant="solo-filled"
           flat
           hide-details
-          single-line
-        ></v-text-field>
+          single-line>
+        </v-text-field>
       </v-responsive>
     </v-container>
   </v-app-bar>

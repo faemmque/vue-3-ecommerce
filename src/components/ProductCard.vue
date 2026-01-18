@@ -46,8 +46,7 @@ export default{
           prepend-icon="mdi-cart-plus"
           block
           variant="flat"
-          @click="onAddProduct(product)"
-        >
+          @click="onAddProduct(product)">
           Agregar al carrito
         </v-btn>
       </v-card-actions>
