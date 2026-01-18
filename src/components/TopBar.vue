@@ -28,7 +28,7 @@ export default{
       ></v-avatar>
 
       <RouterLink to="/">
-        <v-btn prepend-icon="mdi-home" :active="highlightSelectedMenu('home')" variant="text" color="#b94866"> Home </v-btn>
+        <v-btn prepend-icon="mdi-home" :active="$route.name === 'home' || $route.name === 'category'" variant="text" color="#b94866"> Home </v-btn>
       </RouterLink>
       <RouterLink to="/cart">
         <v-badge location="top right" color="#339194" :content="itemsCount" :model-value="showBadgeItemsCount">
