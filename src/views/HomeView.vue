@@ -1,11 +1,24 @@
 <script lang="ts">
 import CategoryList from '@/components/CategoryList.vue';
-import ProductList from '@/components/ProductList.vue';;
+import ProductList from '@/components/ProductList.vue';
+import { useProductsStore } from '@/stores/products';
+
+function  updateCategoryFromRouterParams(categoryIdParam: string){
+  const productsStore = useProductsStore();
+  const categoryId = Number(categoryIdParam);
+  productsStore.selectCategory(categoryId);
+}
 
 export default{
   components:{
     ProductList,
     CategoryList
+  },
+  beforeRouteEnter(to){
+    updateCategoryFromRouterParams(to.params.categoryId as string);
+  },
+  beforeRouteUpdate(to){
+    updateCategoryFromRouterParams(to.params.categoryId as string);
   }
 }
 </script>
