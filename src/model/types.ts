@@ -3,16 +3,16 @@ export interface IProduct{
   name: string,
   price: number,
   image: string,
-  categoryId: number
+  categoryId: number,
 }
 
 export interface ICartDetail{
   product: IProduct,
-  quantity: number
+  quantity: number,
 }
 
 export interface ICategory{
   id: number,
-  name: string
-  description: string
+  name: string,
+  description: string,
 }
