@@ -14,14 +14,14 @@ export default{
   },
   computed:{
     productImageUrl(){
-      return this.product.image ?? '/images/products/default.png'
+      return this.product.image ?? '/images/products/default.jpg'
     }
   },
   methods: {
     ...mapActions(useCartStore, {
       onAddProduct:'onAddProduct'
     }),
-    formatCurrency
+    formatCurrency,
   }
 }
 </script>

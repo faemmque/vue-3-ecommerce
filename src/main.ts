@@ -24,7 +24,6 @@ const vuetify = createVuetify({
 })
 // End Vuetify
 
-
 const app = createApp(App)
 
 app.use(router);
