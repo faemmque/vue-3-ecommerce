@@ -38,20 +38,7 @@ export default{
       <RouterLink to="/about">
         <v-btn prepend-icon="mdi-information-slab-circle" :active="highlightSelectedMenu('about')" variant="text" color="#b94866"> About </v-btn>
       </RouterLink>
-
       <v-spacer></v-spacer>
-
-      <v-responsive max-width="160">
-        <v-text-field
-          density="compact"
-          label="Search"
-          rounded="lg"
-          variant="solo-filled"
-          flat
-          hide-details
-          single-line>
-        </v-text-field>
-      </v-responsive>
     </v-container>
   </v-app-bar>
 </template>

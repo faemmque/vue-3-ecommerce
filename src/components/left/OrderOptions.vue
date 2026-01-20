@@ -2,21 +2,21 @@
 import { useProductsStore } from '@/stores/products';
 import { mapActions, mapState } from 'pinia';
 
-  export default {
-    methods:{
-      ...mapActions(useProductsStore, {
-        orderByPrice: 'orderByPrice',
-        orderByPriceDesc: 'orderByPriceDesc',
-        orderByName: 'orderByName',
-        orderByNameDesc: 'orderByNameDesc'
-      })
-    },
-    computed:{
-      ...mapState(useProductsStore, {
-        order: 'order',
-      })
-    }
+export default {
+  methods:{
+    ...mapActions(useProductsStore, {
+      orderByPrice: 'orderByPrice',
+      orderByPriceDesc: 'orderByPriceDesc',
+      orderByName: 'orderByName',
+      orderByNameDesc: 'orderByNameDesc'
+    })
+  },
+  computed:{
+    ...mapState(useProductsStore, {
+      order: 'order',
+    })
   }
+}
 </script>
 
 <template>
