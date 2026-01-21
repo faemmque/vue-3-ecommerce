@@ -5,18 +5,8 @@ export const useProductsStore = defineStore('products', {
   state: () => ({
     order: 'price' as string,
     categoryId: null as number|null,
-    _products: [
-        { id: 1, name: "Silla", price: 1560, image:'/images/products/silla.jpg', categoryId:1 },
-        { id: 2, name: "Monitor", price: 2300, image:'/images/products/monitor.jpg', categoryId:2 },
-        { id: 3, name: "Microfono", price: 780, image:'/images/products/microfono.jpg', categoryId:2 },
-        { id: 4, name: "Mouse", price: 350, categoryId:2 },
-        { id: 5, name: "Laptop", price: 11600, image:'/images/products/laptop.jpg', categoryId:2 },
-        { id: 6, name: "Teclado", price: 980, image:'/images/products/teclado.jpg', categoryId:2 },
-        { id: 7, name: "SSD", price: 1350, image:'/images/products/ssd.jpg', categoryId:2 },
-        { id: 8, name: "Checador", price: 1480, image:'/images/products/checador.jpg', categoryId:1 },
-        { id: 9, name: "Escritorio", price: 3500, image:'/images/products/escritorio.jpg', categoryId:1 },
-        { id: 10, name: "Grapadora", price: 90, image:'/images/products/grapadora.jpg', categoryId:1 },
-      ] as IProduct[]
+    loading: true as boolean,
+    _products: [] as IProduct[]
   }),
   getters:{
     products(state){
@@ -39,10 +29,17 @@ export const useProductsStore = defineStore('products', {
       } else if(state.order === 'nameDesc') {
         return products.sort((a, b) => b.name.localeCompare(a.name))
       }
-
     }
   },
   actions:{
+    fetchProducts(){
+      fetch('/data/products.json')
+        .then(response => response.json())
+        .then(data => {
+          this._products = data;
+          this.loading = false;
+        })
+    },
     selectCategory(categoriId: number){
       this.categoryId = categoriId;
     },

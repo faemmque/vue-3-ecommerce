@@ -3,11 +3,18 @@ import type { ICategory } from '@/model/types'
 
 export const useCategoriesStore = defineStore('categories', {
   state: () => ({
-    categories: [
-        { id:1, name: "Oficina", description:'Artículos y suministros esenciales para la organización y el trabajo diario en espacios de oficina.' },
-        { id:2, name: "Computo", description:'Equipos, accesorios y soluciones tecnológicas para el procesamiento de información y la productividad digital.' },
-      ] as ICategory[]
+    loading : true as boolean,
+    categories: [] as ICategory[]
   }),
   getters:{},
-  actions:{}
+  actions:{
+    fetchCategories(){
+      fetch('/data/categories.json')
+        .then(response => response.json())
+        .then(data => {
+          this.categories = data;
+          this.loading = false;
+        })
+    }
+  }
 });

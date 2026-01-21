@@ -9,15 +9,19 @@ export default{
   },
   computed:{
     ...mapState(useProductsStore,{
-      products: 'products'
+      products: 'products',
+      loading: 'loading'
     }),
   }
 }
 </script>
 
 <template>
-  <v-row>
-    <v-col v-for="product in products" :key="product.id" cols="4">
+  <div v-if="loading" class="d-flex justify-center align-center h-100">
+    <v-progress-circular color="primary" indeterminate :size="128" :width="7"></v-progress-circular>
+  </div>
+  <v-row v-else>
+    <v-col v-for="product in products" :key="product.id" cols="12" sm="6" md="4" lg="3">
       <ProductCard
         :product="product"
       />

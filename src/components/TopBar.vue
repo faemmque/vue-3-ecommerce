@@ -28,30 +28,26 @@ export default{
       </v-avatar>
 
       <RouterLink to="/">
-        <v-btn prepend-icon="mdi-home" :active="$route.name === 'home' || $route.name === 'category'" variant="text" color="#b94866"> Home </v-btn>
+        <v-btn :active="$route.name === 'home' || $route.name === 'category'" variant="text" color="#b94866">
+          <v-icon class="mr-0 mr-sm-2" icon="mdi-home" />
+          <span class="d-none d-sm-flex">Home</span>
+        </v-btn>
       </RouterLink>
       <RouterLink to="/cart">
         <v-badge location="top right" color="#339194" :content="itemsCount" :model-value="showBadgeItemsCount">
-          <v-btn prepend-icon="mdi-cart-variant" :active="highlightSelectedMenu('cart')" variant="text" color="#b94866"> Cart </v-btn>
+          <v-btn :active="highlightSelectedMenu('cart')" variant="text" color="#b94866">
+            <v-icon class="mr-0 mr-sm-2" icon="mdi-cart-variant" />
+            <span class="d-none d-sm-flex">Cart</span>
+          </v-btn>
         </v-badge>
       </RouterLink>
       <RouterLink to="/about">
-        <v-btn prepend-icon="mdi-information-slab-circle" :active="highlightSelectedMenu('about')" variant="text" color="#b94866"> About </v-btn>
+        <v-btn :active="highlightSelectedMenu('about')" variant="text" color="#b94866">
+          <v-icon class="mr-0 mr-sm-2" icon="mdi-information-slab-circle" />
+          <span class="d-none d-sm-flex">About</span>
+        </v-btn>
       </RouterLink>
-
       <v-spacer></v-spacer>
-
-      <v-responsive max-width="160">
-        <v-text-field
-          density="compact"
-          label="Search"
-          rounded="lg"
-          variant="solo-filled"
-          flat
-          hide-details
-          single-line>
-        </v-text-field>
-      </v-responsive>
     </v-container>
   </v-app-bar>
 </template>

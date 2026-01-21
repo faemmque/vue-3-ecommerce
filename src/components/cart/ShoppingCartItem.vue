@@ -13,14 +13,11 @@ export default {
     }
   },
   computed:{
-    // cartStore(){
-    //   return useCartStore();
-    // },
     calculateSubTotal(){
       return this.detail.quantity * this.detail.product.price
     },
     productImageUrl(){
-      return this.detail.product.image ?? '/images/products/default.png'
+      return this.detail.product.image ?? '/images/products/default.jpg'
     }
   },
   methods:{

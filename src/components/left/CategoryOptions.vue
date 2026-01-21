@@ -5,7 +5,8 @@ import { useCategoriesStore } from '@/stores/categories';
 export default{
   computed:{
     ...mapState(useCategoriesStore, {
-      categories: 'categories'
+      categories: 'categories',
+      loading: 'loading'
     }),
   },
   methods:{
@@ -33,7 +34,9 @@ export default{
       Todas
     </v-list-item-title>
   </v-list-item>
-  <v-list-item :active="$route.name === 'category' && Number($route.params.categoryId) === category.id"
+
+  <v-progress-linear v-if="loading" color="blue-darken-3" :height="6" indeterminate></v-progress-linear>
+  <v-list-item v-else :active="$route.name === 'category' && Number($route.params.categoryId) === category.id"
     v-for="category in categories"
     :key="category.id"
     :title="category.name"
