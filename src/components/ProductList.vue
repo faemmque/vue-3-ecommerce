@@ -21,7 +21,7 @@ export default{
     <v-progress-circular color="primary" indeterminate :size="128" :width="7"></v-progress-circular>
   </div>
   <v-row v-else>
-    <v-col v-for="product in products" :key="product.id" cols="4">
+    <v-col v-for="product in products" :key="product.id" cols="12" sm="6" md="4" lg="3">
       <ProductCard
         :product="product"
       />

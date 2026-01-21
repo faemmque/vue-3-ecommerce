@@ -7,6 +7,7 @@ export default {
   computed:{
     ...mapState(useCartStore,{
       getCartTotal: 'getCartTotal',
+      whatsappLink: 'whatsappLink',
       isDisabled: state => state.cartItemsCount > 0 ? false : true
     })
   },
@@ -31,7 +32,7 @@ export default {
         </tbody>
       </table>
     </v-card-text>
-    <v-btn prepend-icon="mdi-send" block :disabled="isDisabled">Realizar pedido</v-btn>
+    <v-btn :href="whatsappLink" target="_blank" prepend-icon="mdi-send" block :disabled="isDisabled">Realizar pedido</v-btn>
   </v-card>
 </template>
 
